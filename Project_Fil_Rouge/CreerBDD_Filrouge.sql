@@ -276,4 +276,5 @@ INSERT INTO SeComposeDe (num_article, num_com, num_livr, qte_article_com, taux_T
 ('A100002', 210007, 07003, 01, 0.1, 'à la commande'),
 ('G2C0001', 210007, 07003, 02, 0.1, 'à la commande');
 
-
+-- *******************pour sauvegarder la database Villa_Green**********************************************
+$ mysqldump -u admin2 -p Villa_Green > back_Villa_Green.sql
