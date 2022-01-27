@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Green Village_mon_panier</title>
+  <title>Inscription</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="css_filrouge/filrouge_css.css">
 </head>
@@ -87,45 +87,80 @@
     </div>
         
     </div>
-    <div class="row" >       
+    <div class="row" style="background-color: #e5e5e5e5; ">       
       <div class="col-12 d-none d-sm-block mt-3">
-        <h5 style="text-align: center;">Vous avez déjà un compte client ?</h5>
+        <h3 style="text-align: center;">Créer votre compte</h3>
+        
       </div>      
     </div>
     <div class="row">
-        <div class="col-2 d-none d-sm-block"></div>
+        <div class="col-2 d-none d-sm-block"style="background-color: #e5e5e5e5; " ></div>
         <!--pour mettre la forme au milieu du page-->
-        <div class="col-8 d-none d-sm-block">
-            <form action="/action_page.php">
-                <div class="mb-3 mt-3">
-                  <label for="email" class="form-label">Email:</label>
-                  <input type="email" class="form-control" id="email" placeholder="Adresse Email ou Numéro de téléphone" name="email">
-                </div>
-                <div class="mb-3">
-                  <label for="pwd" class="form-label">Mot de passe:</label>
-                  <input type="password" class="form-control" id="pwd" placeholder="Mot de passe" name="pswd">
-                </div>
-                <div class="form-check mb-3">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" name="remember"> Rester connecter
-                  </label>
-                </div >
-                <div style="text-align: center;">
-                <button type="submit" class="btn btn-primary" >Se connecter</button><br>
-                <a href="reprendre_mot_de_passe.html" title="Reprendre_mot_de_passe">Vous avez oublié votre mot de pass ?</a>
-                </div>
-              </form><br><hr>
-              <h5 style="text-align: center;">Vous êtes nouveau ici ? ?</h5>
-              <div style="text-align: center;" class="mt-4">
-                 <button type="submit" class="btn btn-success" onclick="location.href='Inscription.html'">S'Incrire maintemant</button><br>
-                <a href="Inscription_information.html" title="Inscription_information">Plus d'informations</a>
-                </div><br>
+        <div class="col-8 d-none d-sm-block"style="background-color: #e5e5e5e5; ">
+          <p><b style="color: red;">*</b> Ces zones sont obligatoires</p>
+          <div class="form-group">
+            <!--Créer une forme-->
+            <form action="http://bienvu.net/script.php" method="POST" id="myform" name="myform" onsubmit="return verifier()">
+                <label for="nom"><b style="color: red;">*</b> Nom:</label> 
+                <input type="text" class="form-control" name="nom" id="nom_form" >
+                <span id="ernom" class="error"></span> 
+                <br>
+                <label for="prenom"><b style="color: red;">*</b> Prénom:</label> 
+                <input type="text" class="form-control" name="prenom" id="prenom_form" >
+                <span id="erprenom" class="error"></span> 
+                <br>
+                <label for="feminin"><b style="color: red;">*</b>Sexe </label> <br> 
+                <input type="radio" class="form-check form-check-inline" name="sexe" value="feminin" id="feminin" > Féminin                                                
+                <input type="radio" name="sexe" class="form-check form-check-inline" value="masculin" id="masculin"> Masculin
+                <input type="radio" name="sexe" class="form-check form-check-inline" value="Neutre" id="Neutre"> Neutre 
+                <br><span id="ersex" class="error"></span>
+                <br> 
+                <label for="date"><b style="color: red;">*</b> Date de naissance:</label> 
+                <input type="date" class="form-control" name="date" id="date_form" >
+                <span id="erdate" class="error"></span> 
+                <br>
+                <label for="adresse"> Votre adresse:</label> 
+                <input type="text" class="form-control" name="adresse" id="adresse_form" >
+                <span id="eradresse" class="error"></span> 
+                <br>
+                <label for="code"><b style="color: red;">*</b>Code postale:</label> 
+                <input type="number" class="form-control" name="code" id="code_form" >
+                <span id="ercode" class="error"></span> 
+                <br>
+                <label for="ville">Ville:</label> 
+                <input type="text" class="form-control" name="ville" id="ville_form" >
+                <span id="erville" class="error"></span> 
+                <br>
+                <label for="telephone"><b style="color: red;">*</b>Numéro de téléphone:</label> 
+                <input type="number" class="form-control" name="tetephone" id="tele_form" >
+                <span id="ertele" class="error"></span> 
+                <br>
+                <label for="email"><b style="color: red;">*</b> Adresse d'email:</label> 
+                <input type="email" class="form-control" name="email" id="email_form" >
+                <span id="eremail" class="error"></span> 
+                <br>
+                <label for="password"><b style="color: red;">*</b> Mot de passe:</label> 
+                <input type="password" class="form-control" name="password" id="password_form" >
+                <span id="erpass" class="error"></span> 
+                <br>
+                <label for="confirm"><b style="color: red;">*</b> Confirmation mot de passe:</label> 
+                <input type="password" class="form-control" name="confirm" id="confirm_form" >
+                <span id="erconfirm" class="error"></span> 
+                <br>
+                <input type="checkbox" name="boxfin" id="form_box">
+                <label for="box"><b style="color: red;">*</b>J'accepte le traitement informatique de ce formulaire</label> <br>
+                <span id="erbox" class="error"> </span> <br>
+                <br>
+                <input type="submit" class="btn btn-primary"  value="Envoyer">
+                <input type="reset" class="btn btn-dark"  value="Annuler">
+            </form><br><hr>
+          </div>   
         </div>
-        <div class="col-2 d-none d-sm-block"></div>
+        <div class="col-2 d-none d-sm-block" style="background-color: #e5e5e5e5; "></div>
     </div>
     
 
-  
+    
     <footer>
       <div class="row" style="background-color: #e5e5e5e5; ">
         <div class="col-12 d-none d-sm-block mt-3">
@@ -137,12 +172,9 @@
       </div>
     </footer>
       
-  </div>
-      
-        
-           
-
-  
+  </div>  
+                 
+   <script src="css_filrouge/inscription.js"></script> 
    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

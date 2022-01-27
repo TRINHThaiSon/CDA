@@ -19,3 +19,7 @@
     top: 5px;
     margin-right: 10px;
 }
+.error{
+    color: #D8000C;
+    background-color: #FFBABA;
+ }
