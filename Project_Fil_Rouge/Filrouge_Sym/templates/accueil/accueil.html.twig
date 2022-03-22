@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="row"style="background-color: #e5e5e5e5; " >
+    <div class="col-sm-12 col-lg-9 col-xl-9  mt-3" >
+      <img src="assets/Charte/BODY/pub guitare.png" alt="pub_guitar" class="w-100"  height="500">
+    </div>
+    <div class="col-sm-12 col-lg-3 col-xl-3 d-none d-lg-block d-xl-block mt-3">
+      <img src="assets/Charte/BODY/banniere droite prix.png" alt="banniere_droite" class="w-100"  height="500">
+    </div><br>    
+    <h1 class="ml-3">Découvrez nos catégories </h1>
+    {#{{dump(accueilListe)}}#}
+  </div>
+  <div class="row"style="background-color: #e5e5e5e5; " >
+   {% for row in accueilListe %}
+    <div class="col-4 d-none d-sm-block mt-1 " >
+      <div style="text-align: center;">
+        <a href="{{path('souscates',{id:row.id})}}" title="{{row.nomCat}}"> <img src="assets/Charte/BODY/{{row.imageCat}}" alt="{{row.nomCat}}" class="img-fluid " width="385"  ></a>
+      </div>
+      <div style="text-align: center;">
+          <a href="{{path('souscates',{id:row.id})}}" title="{{row.nomCat}}">{{row.nomCat}}</a>
+      </div><br>
+  </div>
+   {% endfor %}
+  <br>
+  </div>
+  <div class="row"style="background-color: #e5e5e5e5; " >
+    <div class="col-6 d-none d-sm-block mt-2" >
+      <div style="text-align: left;" ><h2>Nos top ventes</h2></div>
+    </div>
+    <div class="col-5 d-none d-sm-block mt-2 ml-4" >
+      <div style="text-align: left;"><h2>Nos Partenaires</h2></div>
+    </div>
+  </div>
+  <div class="row"style="background-color: #e5e5e5e5; " >
+    <div class="col-6 d-none d-sm-block mt-2" >
+      <img src="assets/Charte/BODY/TOP VENTES ROLL OVER total.png" alt="top_vente_guitare" class="w-100" height="382">
+    </div>
+    <div class="col-6 d-none d-sm-block mt-2" >
+      <img src="assets/Charte/BODY/partenaires 4 logos.png" alt="partenaires" class="w-100" height="382">
+    </div>
+   
+  </div>
+{% endblock %}

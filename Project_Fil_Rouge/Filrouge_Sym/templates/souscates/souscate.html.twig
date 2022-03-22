@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SouscatesController!{% endblock %}
+
+{% block body %}
+<div class="row"style="background-color: #e5e5e5e5; " >
+    <div class="col-12 d-none d-sm-block mt-3" >
+        <img src="/assets/Charte/images/licensing-interactive-streams.jpg" alt="background_homepage_web" class="img-fluid " ><br>
+    </div><br>
+    <div class="col-12 d-none d-sm-block mt-1">
+        <a href="{{path('homepage')}}" title="Home_page_front"><img src="/assets/Charte/images/homepage_icon.png" alt="homepage_icon" width="32" >Home page</a>
+    </div> 
+    <br><br>    
+    <h2 class="ml-3">{{ categorie.nomCat }}</h2>
+    {#{{dump(accueilListe)}}#}
+  </div>
+  <table class="table ">
+    <thead>
+      <tr>
+        <th class="text_change1">Image</th> 
+        <th class="text_change1">SousCatégories</th>
+        
+        <th class="text_change1">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for row in categorie.sousCategories %}
+      <tr>
+        <td><a href="{{path('produitsfront',{id:row.id})}}" title="{{row.nomSouscat}}"> <img src="/assets/Charte/images/thomann/{{row.imageSouscat}}" alt="{{row.nomSouscat}}" class="img-fluid " width="200" ></a></td>
+        <td><a href="{{path('produitsfront',{id:row.id})}}" title="{{row.nomSouscat}}">{{row.nomSouscat}}</a></td>
+        <td><a href="" class="btn btn-warning">Modifier</a>
+            <a href="" class="btn btn-danger">Supprimer</a>                
+        </td>
+      </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="col-12 d-none d-sm-block" style="text-align: center;">
+  <a href="" class="btn btn-success ">Ajouter une souscatégorie</a> 
+  <button type="button" class="btn btn-primary" onclick="retour()">Retour</button>
+  <script>
+      function retour(){
+          history.back();
+      }
+  </script>
+</div><br>
+{% endblock %}

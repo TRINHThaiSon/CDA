@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+{% block title %} Mon panier {% endblock %}
+{% block body %}
+<div class="row" style="background-color: #e5e5e5e5; "> 
+<div class="col-12 d-none d-sm-block mt-3" >
+    <img src="assets/Charte/images/pre-1972-recordings11.jpg" alt="background_web" class="img-fluid " >
+</div>
+<div class="col-12 d-none d-sm-block mt-1">
+  <a href="{{path('accueil')}}" title="Home_page"><img src="/assets/Charte/images/homepage_icon.png" alt="homepage_icon" width="32" >Page d'accueil</a>
+</div> 
+<br>
+</div>
+<div class="row" >
+       
+    <div class="col-12 d-none d-sm-block mt-1">
+      <h1>Mon panier</h1>
+    </div>
+    
+    <table class="table ">
+      <thead>
+        <tr>
+          <th style="text-align :left;">Image</th> 
+          <th style="text-align :left;">Articles</th>
+          <th style="text-align :center;">Prix</th>
+          <th style="text-align :center;">Quantité</th>
+          <th style="text-align :center;">Total</th>
+          <th style="text-align :center;">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for element in dataPanier %}
+        <tr>
+          <td><img src="/assets/Charte/images/thomann/produits/{{element.produit.imageArticle}}" alt="{{element.produit.libelleCourteArticle}}" width="150" class="mt-1" ></td>
+          <td> {{element.produit.libelleCourteArticle}}</td>          
+          <td style="text-align :center;">{{element.produit.prixunitArticle}}</td> 
+          <td style="text-align :center;">{{element.quantite}}</td>
+          <th style="text-align :center;">{{element.quantite * element.produit.prixunitArticle}} $</th>
+          <td style="text-align :center;"><a href="{{path("ajouter",{id: element.produit.id})}}" class="btn btn-success"><i class="bi bi-cart-plus" ></i></a>
+              <a href="{{path("retirer",{id: element.produit.id})}}" class="btn btn-warning"><i class="bi bi-cart-dash" ></i></a>
+              <a href="{{path("supprimer",{id: element.produit.id})}}" class="btn btn-danger"><i class="bi bi-cart-x" ></i></a>
+          </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5" class="text-center"><h4>Le panier est vide</h4></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4"><b>* Prix total hors taxe du panier</b></td>
+          <td style="text-align :center;"><b>{{total}} $</b></td>
+          <td style="text-align :center;"><a href="{{path("tous_supprime")}}" class="btn btn-danger">Tous supprimer</a></td>
+        </tr>
+      </tfoot>
+    </table>          
+  </div>
+  <div class="col-12 d-none d-sm-block" style="text-align: right;">    
+     <!--s'il n'y a aucun produit dans le panier, egale au prix total = 0-->
+      {% if total == 0 %}
+      <a href="{{path('accueil')}}" class="btn btn-success"><i class="bi bi-cart-plus" ></i>Ajuster un produit</a>
+      
+      {% else %}
+      <a href="{{path('accueil')}}" class="btn btn-success"><i class="bi bi-cart-plus" ></i> Plus de produit</a>
+          {% if app.user %}
+              <a href="{{path('validecommande')}}" class="btn btn-success"><i class="bi bi-cart-plus" ></i>Passer la commande</a>      
+          {% else %}
+              <a href="{{path('app_login')}}" class="btn btn-success"><i class="bi bi-cart-plus" ></i>Passer la commande</a>
+          {% endif %}    
+      {% endif %}
+    
+    <button type="button" class="btn btn-primary mr-3" onclick="retour()">Retour</button>
+    <script>
+        function retour(){
+            history.back();
+        }
+    </script>
+  </div><br>
+{% endblock %}

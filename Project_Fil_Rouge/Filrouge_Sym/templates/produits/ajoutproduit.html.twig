@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+{% form_theme produitform 'bootstrap_5_layout.html.twig' %}
+{% block title %}AjoutProduit{% endblock %}
+
+{% block body %}
+<div class="row"style="background-color: #e5e5e5e5; " >
+    <div class="col-12 d-none d-sm-block mt-3" >
+        <img src="/assets/Charte/images/licensing-interactive-streams.jpg" alt="background_homepage_web" class="img-fluid " ><br>
+    </div><br>
+    <div class="col-12 d-none d-sm-block mt-1">
+        <a href="{{path('homepage')}}" title="Home_page_front"><img src="/assets/Charte/images/homepage_icon.png" alt="homepage_icon" width="32" >Home page</a>
+    </div> 
+    <br><br> 
+    <div class="col-12 d-none d-sm-block mt-3">
+        <h3 style="text-align: center;">Ajouter un nouveau produit</h3>      
+    </div>  
+</div>   
+<div class="row" style="background-color: #e5e5e5e5; ">
+    <div class="col-3 d-none d-sm-block" ></div>
+        <!--pour mettre la forme au milieu du page-->
+    <div class="col-6 d-none d-sm-block">
+       {{form_start(produitform)}}
+         <div class="form-group">
+               <label for="">Nom de produit</label>
+               {{ form_widget(produitform.libelleCourteArticle)}}               
+         </div>
+         <div class="form-group">
+            <label for="">Description</label>
+            {{ form_widget(produitform.libelleLongArticle)}}
+         </div>
+         <div class="form-group">
+            <label for="souscate">Sous Catégorie</label>
+            {{ form_widget(produitform.souscategorie)}}
+         </div>
+        
+         <div class="form-group">
+            <label for="">Image</label>
+            {{ form_widget(produitform.imageArticle)}}
+         </div>
+         <div class="form-group">
+            <label for="">Prix unitaire</label>
+            {{ form_widget(produitform.prixunitArticle)}}
+         </div>
+         <div class="form-group">
+            <label for="">Quantité en stock</label>
+            {{ form_widget(produitform.nombreStkArticle)}}
+         </div>
+         
+         <div class="form-group">
+            <label for="fournisseur">Fournisseur</label>
+            {{ form_widget(produitform.Fournisseurs)}}
+         </div>              
+         
+         {{ form_rest(produitform)}}
+         <button type="submit" class="btn btn-primary">Submit</button>
+         <button type="reset" class="btn btn-warning">Annuler</button>
+       {{form_end(produitform)}} <br>
+    </div> 
+    <div class="col-3 d-none d-sm-block" ></div>
+ </div>   
+ 
+{% endblock %}     

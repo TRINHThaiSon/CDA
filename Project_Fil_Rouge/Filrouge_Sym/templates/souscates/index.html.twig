@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SouscatesController!{% endblock %}
+
+{% block body %}
+<div class="row"style="background-color: #e5e5e5e5; " >
+    <div class="col-sm-12 col-lg-9 col-xl-9  mt-3" >
+      <img src="/assets/Charte/BODY/pub guitare.png" alt="pub_guitar" class="w-100"  height="500">
+    </div>
+    <div class="col-sm-12 col-lg-3 col-xl-3 d-none d-lg-block d-xl-block mt-3">
+      <img src="/assets/Charte/BODY/banniere droite prix.png" alt="banniere_droite" class="w-100"  height="500">
+    </div>
+    <div class="col-12 d-none d-sm-block mt-1">
+        <a href="{{path('accueil')}}" title="Home_page"><img src="/assets/Charte/images/homepage_icon.png" alt="homepage_icon" width="32" >Page d'accueil</a>
+    </div> 
+    <br><br>    
+    <h2 class="ml-3">{{ categorie.nomCat }}</h2>
+    {#{{dump(accueilListe)}}#}
+  </div>
+<div class="row" >
+{% for row in categorie.sousCategories %}
+<div class="col-4 d-none d-sm-block mt-5 " >
+  <div style="text-align: center;">
+    <a href="{{path('produits',{id:row.id})}}" title="{{row.nomSouscat}}"> <img src="/assets/Charte/images/thomann/{{row.imageSouscat}}" alt="{{row.nomSouscat}}" class="img-fluid " width="200" ></a>
+  </div><br>
+  <div style="text-align: center;">
+      <a href="{{path('produits',{id:row.id})}}" title="{{row.nomSouscat}}">{{row.nomSouscat}}</a>
+  </div><br>
+</div>
+{% endfor %}
+</div>
+<div class="col-12 d-none d-sm-block" style="text-align: right;">
+  <button type="button" class="btn btn-primary" onclick="retour()">Retour</button>
+  <script>
+      function retour(){
+          history.back();
+      }
+  </script>
+</div><br>
+{% endblock %}

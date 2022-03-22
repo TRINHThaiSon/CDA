@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProduitsListe{% endblock %}
+
+{% block body %}
+<div class="row"style="background-color: #e5e5e5e5; " >
+    <div class="col-12 d-none d-sm-block mt-3" >
+        <img src="/assets/Charte/images/licensing-interactive-streams.jpg" alt="background_homepage_web" class="img-fluid " ><br>
+    </div><br>
+    <div class="col-12 d-none d-sm-block mt-1">
+        <a href="{{path('homepage')}}" title="Home_page_front"><img src="/assets/Charte/images/homepage_icon.png" alt="homepage_icon" width="32" >Home page</a>
+    </div> 
+    <br><br>    
+    <h2 class="ml-3">{{ sousCategorie.nomSouscat}}</h2>
+    {#{{dump(accueilListe)}}#}
+  </div>
+  <table class="table ">
+    <thead>
+      <tr>
+        <th class="text_change1">Image</th> 
+        <th class="text_change1">Nom de produit</th>
+        <th class="text_change1">Description</th>
+        <th class="text_change1">Prix</th>
+        <th class="text_change1">Quantité en stock</th>
+        <th class="text_change1">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for row in sousCategorie.produits %}
+      <tr>
+        <td><img src="/assets/Charte/images/thomann/produits/{{row.imageArticle}}" alt="{{row.libelleCourteArticle}}" class="img-fluid " width="100"  ></td> 
+        <td>{{row.libelleCourteArticle}}</td>  
+        <td>{{row.libelleLongArticle | raw}}</td>             
+        <td>{{row.prixunitArticle}}$</td>
+        <td style="text-align :center;">{{row.nombreStkArticle}}</td>
+        <td>
+            <a href="{{path('editproduit',{'id':row.id})}}" class="btn btn-warning">Modifier</a>
+           <a href="{{path('removeproduit',{'id':row.id})}}" class="btn btn-danger">Supprimer</a>          
+        </td>
+      </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="col-12 d-none d-sm-block" style="text-align: center;">
+  <a href="{{path('newproduit')}}" class="btn btn-success ">Ajouter une produit</a> 
+  <button type="button" class="btn btn-primary" onclick="retour()">Retour</button>
+  <script>
+      function retour(){
+          history.back();
+      }
+  </script>
+</div><br>
+{% endblock %}

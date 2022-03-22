@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Enregistrement de commande {% endblock %}
+{% block body %}
+<div class="row" style="background-color: #e5e5e5e5; "> 
+<div class="col-12 d-none d-sm-block mt-3" >
+    <img src="assets/Charte/images/pre-1972-recordings11.jpg" alt="background_web" class="img-fluid " >
+</div>
+<div class="col-12 d-none d-sm-block mt-1">
+  <a href="{{path('accueil')}}" title="Home_page"><img src="/assets/Charte/images/homepage_icon.png" alt="homepage_icon" width="32" >Page d'accueil</a>
+</div> 
+<br><br>
+</div>
+<div class="row" style="background-color: #e5e5e5e5; ">
+   
+    <div class="col-2 d-none d-sm-block" ></div>
+   
+        <!--pour mettre la forme au milieu du page-->
+    <div class="col-8 d-none d-sm-block">
+      <h3 style="text-align :center;">Créer votre commande</h3><br>
+       {{form_start(commform)}}
+         <div class="form-group">
+               <label for="">Nom de client</label>
+               {{ form_widget(commform.nomClient)}}               
+         </div>
+         <div class="form-group">
+            <label for="">Prénom de client</label>
+            {{ form_widget(commform.prenomClient)}}               
+         </div>
+
+         <div class="form-group">
+            <label for="">Adresse de livraison</label>
+            {{ form_widget(commform.adressLivr)}}
+         </div>
+         <div class="form-group">
+            <label for="">Code postale de livraison</label>
+            {{ form_widget(commform.cpLivr)}}
+         </div>
+        
+         <div class="form-group">
+            <label for="">Ville de livraison</label>
+            {{ form_widget(commform.villeLivr)}}
+         </div>
+         <div class="form-group">
+            <label for="">Adresse de facturation</label>
+            {{ form_widget(commform.adressFact)}}
+         </div>
+         <div class="form-group">
+            <label for="">Code postale </label>
+            {{ form_widget(commform.cpFact)}}
+         </div>
+         
+         <div class="form-group">
+            <label for="">Ville de facturation</label>
+            {{ form_widget(commform.villeFact)}}
+         </div>   
+         <div class="form-group">
+            <label for="">Date de la commande</label>
+            {{ form_widget(commform.dateComm)}}
+         </div> <br>
+         <h5>Détails de la commande</h5> 
+         <table class="table ">
+            <thead>
+              <tr>                
+                <th style="text-align :left;">Articles</th>
+                <th style="text-align :center;">Prix</th>
+                <th style="text-align :center;">Quantité</th>
+                <th style="text-align :center;">Total</th>                
+              </tr>
+            </thead>
+            <tbody>
+              {% for element in dataPanier %}
+              <tr>                
+                <td> {{element.produit.libelleCourteArticle}}</td>          
+                <td style="text-align :center;">{{element.produit.prixunitArticle}}</td> 
+                <td style="text-align :center;">{{element.quantite}}</td>
+                <th style="text-align :center;">{{element.quantite * element.produit.prixunitArticle}} $</th>                
+              </tr>              
+              {% endfor %}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3"><b>* Prix total hors taxe du panier</b></td>
+                <td style="text-align :left;"><b>{{total}} $</b></td>                
+              </tr>
+              <tr>
+               <td colspan="3"><b>* Taux TVA de 10%</b></td>
+               <td style="text-align :left;"><b> {{total * 0.1 }} $</b></td>                
+             </tr>
+             <tr>
+               <td colspan="3"><b>* Le prix total</b></td>
+               <td style="text-align :left;"><b> {{total * 1.1 }} $</b></td>                
+             </tr>
+            </tfoot>
+          </table>          
+         
+
+         <div class="form-group">
+            <label for="">Type de paiement</label>
+            {% if client.typeClient == "PRO" %}
+             {{ form_widget(commform.typePaiement,{value: "APR"})}}
+            {% else %}
+             {{ form_widget(commform.typePaiement,{value: "DIR"})}}
+            {% endif %}
+         </div>   <br>                                  
+         
+         {{ form_rest(commform)}}
+         <button type="submit" class="btn btn-primary">Submit</button>
+         <button type="reset" class="btn btn-warning">Annuler</button>
+      </form>
+       {{form_end(commform)}} <br>
+    </div> 
+
+    <div class="col-2 d-none d-sm-block" ></div>
+ </div>   
+{% endblock %}

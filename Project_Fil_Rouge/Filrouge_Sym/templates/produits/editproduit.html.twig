@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% form_theme produitform 'bootstrap_5_layout.html.twig' %}
+{% block title %}AjoutProduit{% endblock %}
+
+{% block body %}
+<div class="row"style="background-color: #e5e5e5e5; " >
+    <div class="col-12 d-none d-sm-block mt-3" >
+        <img src="/assets/Charte/images/licensing-interactive-streams.jpg" alt="background_homepage_web" class="img-fluid " ><br>
+    </div><br>
+    <div class="col-12 d-none d-sm-block mt-1">
+        <a href="{{path('homepage')}}" title="Home_page_front"><img src="/assets/Charte/images/homepage_icon.png" alt="homepage_icon" width="32" >Home page</a>
+    </div> 
+    <br><br> 
+    <div class="col-12 d-none d-sm-block mt-3">
+        <h3 style="text-align: center;">Modifier un produit</h3>      
+    </div>  
+</div>   
+<div class="row" style="background-color: #e5e5e5e5; ">
+    <div class="col-3 d-none d-sm-block" ></div>
+        <!--pour mettre la forme au milieu du page-->
+    <div class="col-6 d-none d-sm-block">
+       
+        {{ include('produits/_form.html.twig') }}
+    </div> 
+    <div class="col-3 d-none d-sm-block" ></div>
+ </div>   
+ 
+{% endblock %}     

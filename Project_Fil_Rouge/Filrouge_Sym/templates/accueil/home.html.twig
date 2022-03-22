@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block title %} Home page {% endblock %}
+{% block body %}
+<div class="row" style="background-color: #e5e5e5e5; "> 
+    <div class="col-12 d-none d-sm-block mt-3" >
+        <img src="assets/Charte/images/licensing-interactive-streams.jpg" alt="background_homepage_web" class="img-fluid " ><br>
+    </div><br>
+    <div>
+    <h1 class="ml-3">Listes des catégories </h1>
+    </div>
+    <table class="table ">
+        <thead>
+          <tr>
+            <th class="text_change1">Image</th> 
+            <th class="text_change1">Catégories</th>
+            
+            <th class="text_change1">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for row in accueilListe %}
+          <tr>
+            <td><a href="{{path('souscatesfront',{id:row.id})}}" title="{{row.nomCat}}"> <img src="assets/Charte/BODY/{{row.imageCat}}" alt="{{row.nomCat}}" class="img-fluid " width="200" ></a></td>
+            <td><a href="{{path('souscatesfront',{id:row.id})}}" title="{{row.nomCat}}">{{row.nomCat}}</a></td>
+            <td><a href="" class="btn btn-warning">Modifier</a>
+                <a href="" class="btn btn-danger">Supprimer</a>                
+            </td>
+          </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="col-12 d-none d-sm-block" style="text-align: center;">
+       <a href="" class="btn btn-success ">Ajouter une catégorie</a> 
+    </div>
+</div>
+{% endblock %}

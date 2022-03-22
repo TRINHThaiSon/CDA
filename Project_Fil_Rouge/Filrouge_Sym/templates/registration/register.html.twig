@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{% form_theme registrationForm 'bootstrap_5_layout.html.twig' %}
+{% block title %}Register{% endblock %}
+
+{% block body %}
+ <div class="row" style="background-color: #e5e5e5e5;">
+    <div class="col-12 d-none d-sm-block mt-3" >
+        <img src="assets/Charte/images/pre-1972-recordings11.jpg" alt="background_web" class="img-fluid " >
+    </div>
+    <div class="col-12 d-none d-sm-block mt-1">
+      <a href="{{path('accueil')}}" title="Home_page"><img src="/assets/Charte/images/homepage_icon.png" alt="homepage_icon" width="32" >Page d'accueil</a>
+    </div> 
+  </div>
+    
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+    <div class="row" style="background-color: #e5e5e5e5;">
+        <div class="col-3 d-none d-sm-block" ></div>
+        <!--pour mettre la forme au milieu du page-->
+        <div class="col-6 d-none d-sm-block">
+        <h1 style="text-align: center;">Registration</h1>
+
+        {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.nomUser, {label: "Votre nom"}) }}
+            {{ form_row(registrationForm.prenomUser, {label: "Votre prénom"}) }}
+            {{ form_row(registrationForm.adressUser, {label: "Votre adresse"}) }}
+            {{ form_row(registrationForm.cpUser, {label: "Code postale"}) }}
+            {{ form_row(registrationForm.villeUser, {label: "Votre ville"}) }}
+            {{ form_row(registrationForm.contactUser, {label: "Votre numéro de téléphone"}) }}
+            {{ form_row(registrationForm.typeUser, {label: "Votre type de client"}) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+            }) }}
+            {{ form_row(registrationForm.agreeTerms) }}
+
+            <button type="submit" class="btn btn-primary">Register</button>
+        {{ form_end(registrationForm) }}
+       </div> 
+       <div class="col-3 d-none d-sm-block" ></div>
+    </div>
+   
+{% endblock %}
